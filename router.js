@@ -39,4 +39,11 @@ router.delete("/event/:eventId", (req, res, next) => {
 		.catch(next);
 });
 
+//GET method to fetch a single event
+router.get("/event/:eventId", (req, res, next) => {
+	Event.findByPk(parseInt(req.params.eventId))
+		.then(event => res.send({ event }))
+		.catch(next);
+});
+
 module.exports = router;
